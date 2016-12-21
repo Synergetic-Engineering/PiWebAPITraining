@@ -1,16 +1,16 @@
 from requests.auth import HTTPBasicAuth
 from requests_kerberos import HTTPKerberosAuth, REQUIRED
 
+PI_WEB_API_BASE_URL = 'https://pisrv/piwebapi' # URL of the Pi Web API service
 
-PI_WEB_API_BASE_URL = 'https://pisrv/piwebapi'
+AF_SERVER_PATH = '\\\\PISRV' # AF server path as seen by the Pi web API
+DS_SERVER_PATH = '\\\\PISRV' # Data archive server path as seen by the Pi web API
+AF_DB_NAME = 'PiWebApiTrainingFinal' # The AF database to work with - can be already existing
 
-AF_SERVER_PATH = '\\\\PISRV'
-DS_SERVER_PATH = '\\\\PISRV'
-AF_DB_NAME = 'PiWebApiTrainingFinal'
-
-PI_USR = None
-PI_PWD = None
-PI_AUTH_METHOD = 'Basic' 
+# Pi Web API HTTP authentication settings
+PI_USR = None # user name for basic auth
+PI_PWD = None # password for basic auth
+PI_AUTH_METHOD = 'Basic' # Basic or Kerberos methods can be used
 KERBEROS_AUTH_STR = None    # use a specific account for Kerberos auth in the format: user@realm:password, otherwise set to None
                                                 # to use currently logged on user
 
