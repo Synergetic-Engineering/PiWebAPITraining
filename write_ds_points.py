@@ -1,9 +1,7 @@
 import sys
-import os
 import csv
 from pi_api import data_archive
 from pi_api.common import unixtime_to_pi_timestamp
-from config import kogancreek_model as site_model
 from config.pi_system import DS_SERVER_PATH
 
 import logging
@@ -24,7 +22,7 @@ with open(csv_file_name) as fp:
     # Check tag names in CSV file correspond to PiPoints
     # Create the Pi Pount path using the data archive server path 
     point_paths = ['%s\\%s' %(DS_SERVER_PATH, t) for t in tag_names]
-    # Create a tag name to PiPoint WebId lookup dict 
+    # Create a tag name to PiPoint WebId lookup dict
     tag_webid_lookup = data_archive.get_webids_for_pipoints(point_path_list=point_paths)
 
     log.info('%s tags found in: %s' %(len(tag_names), csv_file_name))
@@ -59,5 +57,3 @@ for webid in data_for_points.keys():
         log.info('%s values successfully written to Pi Point: %s' %(len(data_for_points[webid]), webid))
     else:
         log.error('Error encounted while writing data set to PI. See above error for details.')
-
- 
